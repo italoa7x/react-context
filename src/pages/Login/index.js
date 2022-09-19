@@ -10,13 +10,7 @@ function Login() {
 
   function handleLogin(e) {
     e.preventDefault();
-
-    if(nome && saldo){
-      router.push("/feira");
-    }else{
-      alert('Digite o nome/saldo para prosseguir!!')
-    }
-
+    router.push("/feira");
   }
   return (
     <Container>
@@ -38,7 +32,12 @@ function Login() {
           startAdornment={<InputAdornment position="start">R$</InputAdornment>}
         />
       </InputContainer>
-      <Button variant="contained" color="primary" onClick={handleLogin}>
+      <Button
+        disabled={nome.length < 4 || saldo === '0'}
+        variant="contained"
+        color="primary"
+        onClick={handleLogin}
+      >
         Avançar
       </Button>
     </Container>
